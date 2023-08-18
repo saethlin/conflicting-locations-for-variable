@@ -1,0 +1,8 @@
+#!/bin/bash
+
+set -e
+
+export CARGO_INCREMENTAL=0
+export RUSTFLAGS="-Ccodegen-units=32768 -Copt-level=1 -Cdebuginfo=2 -Zmir-opt-level=0 -Zinline-mir -Zinline-mir-threshold=1000 -Zinline-mir-hint-threshold=1000 -Zmir-enable-passes=+CopyProp,+ScalarReplacementOfAggregates"
+cargo clean
+cargo b
